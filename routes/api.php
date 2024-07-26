@@ -27,7 +27,11 @@ Route::post('register', [AuthenticationController::class, 'register']);
 Route::post('login', [AuthenticationController::class, 'login']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
-Route::post('/feed/store', [FeedController::class, 'store']);
-Route::post('/feed/like/{fee_id}', [FeedController::class, 'likePost']);
+    Route::get('/feeds', [FeedController::class, 'index']);
+    Route::post('/feed/store', [FeedController::class, 'store']);
+    Route::post('/feed/like/{fee_id}', [FeedController::class, 'likePost']);
+    Route::post('/feed/comment/{fee_id}', [FeedController::class, 'comment']);
+    Route::get('/feed/comments/{fee_id}', [FeedController::class, 'getComments']);
+
 
 });
